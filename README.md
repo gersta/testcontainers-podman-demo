@@ -27,7 +27,13 @@ This will give us the **port** and the **path to the podman.sock file**.
 
 Now, we can expose the podman.sock to the outside world (the host machine) and thus make it available to Testcontainers:
 
-`ssh -i ~/.ssh/podman-machine-default core@localhost -p 53136 -L'/tmp/podman.sock:/run/user/1000/podman/podman.sock'`
+```
+ssh -i \
+~/.ssh/podman-machine-default \
+core@localhost \
+-p 53136 \
+-L'/tmp/podman.sock:/run/user/1000/podman/podman.sock'
+```
 
 The ssh options are as follows:
 
