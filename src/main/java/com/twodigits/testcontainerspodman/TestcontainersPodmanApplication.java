@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TestcontainersPodmanApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestcontainersPodmanApplication.class, args)
+		SpringApplication.run(TestcontainersPodmanApplication.class, args);
 	}
 
 }
