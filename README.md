@@ -51,6 +51,13 @@ where we want to run Testcontainers:
 export DOCKER_HOST=unix:///temp/podman.sock
 ```
 
+You will also need to set other environment variables to circumvent errors:
+
+As described in the [GitHub issue about connection to Ryuk](https://github.com/testcontainers/testcontainers-java/issues/3609), you will need to disable it (with all consequences):
+```
+export TESTCONTAINERS_RYUK_DISABLED=true
+```
+
 # Troubleshooting
 
 ## Address already in use
