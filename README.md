@@ -30,7 +30,7 @@ Now, we can expose the podman.sock to the outside world (the host machine) and t
 ```
 ssh -i \
 ~/.ssh/podman-machine-default \
-core@localhost \
+-N core@localhost \
 -p 53136 \
 -L'/tmp/podman.sock:/run/user/1000/podman/podman.sock'
 ```
@@ -40,6 +40,7 @@ The ssh options are as follows:
 ```
 - i: allows us to specify an identity file to use for the connection
 - p: specify the port to establish the SSL connection on. Note: The VM does not expose SSH on 22 as usually done
+- N: do not execute anything. Keeps the terminal window open
 - L: Forward connections from the local socket to the remote socket
 ```
 
