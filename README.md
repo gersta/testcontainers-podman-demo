@@ -88,6 +88,47 @@ As described in the [GitHub issue about connection to Ryuk](https://github.com/t
 export TESTCONTAINERS_RYUK_DISABLED=true
 ```
 
+## Running actual Testcontainer tests
+Setting up a postgres environment for the test cases can be made super easy by following the
+[testcontainer jdbc syntax](https://www.testcontainers.org/modules/databases/jdbc/). This allows to slightly
+adjust the current jdbc url from our application code and make testcontainers spawn the postgres database
+automatically:
+
+Instead of this URL in the application.properties under `src/main/resources`:
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+```
+
+We do this in the application properties under `src/test/resources`:
+```
+spring.datasource.url=jdbc:tc:postgresql:14.2:///integration-tests-db
+```
+
+The important part is the *tc* in between jdbc and postgresql. This will set the version of
+the postgres container to 14.2 and create a database called *intergration-tests-db*.
+
+In the actual tests, there is no further setup required, this will do as a stupid-simple test:
+
+```java
+@SpringBootTest
+class CharacterRepositoryTest {
+
+    @Autowired
+    private CharacterRepository repository;
+
+    @Test
+    void empty_database_on_init() {
+        List<Character> characters = (List<Character>) repository.findAll();
+
+        assertTrue(characters.isEmpty());
+    }
+}
+```
+
+The only convenience problem at the moment is, that you need to set `DOCKER_HOST` and `TESTCONTAINERS_RYUK_DISABLED`
+for either each individual test or once per test class. If you set it on the class, you cannot execute
+the individual test cases.
+
 ## Troubleshooting
 
 ### Address already in use
