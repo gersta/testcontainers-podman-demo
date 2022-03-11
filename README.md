@@ -3,6 +3,36 @@ The goal of this project is twofolded:
 - First, I want to write my first tests ever with Testcontainers and start to learn more about it
 - Second, I want to learn about Podman and other container technologies besides Docker to boost my daily coding life
 
+## Local Database Setup
+In order to test something with Testcontainers, we will need an actual application setup first.
+
+I will use a Postgre database instance running via Podman, which exposes the connection on `localhost:5432`:
+
+```
+podman run \
+-p 5432:5432 \
+-e POSTGRES_PASSWORD='<PASSWORD>' \
+--name postgres postgres
+```
+
+And for any consecutive runs, just restart the container:
+
+```
+podman restart postgres
+```
+
+In order to connect Spring boot with the database, you need to set the following two
+properties as environment variables:
+
+```
+SPRING_DATASOURCE_USERNAME=<USERNAME>
+SPRING_DATASOURCE_PASSWORD=<PASSWORD>
+```
+
+The default username of postgres is `postgres` and the password is the one you set in the `podman run`
+command above. Further, postgres's default database name is also `postgres`, which is preset in the `application.properties`
+file.
+
 ## Getting Testcontainers to run
 First, we will need a podman VM that will run our containers later
 
