@@ -125,9 +125,10 @@ class CharacterRepositoryTest {
 }
 ```
 
-If you set the environment variables via your IDE (e.g. IntelliJ Run Configurations), the only convenience problem at the moment is, that you need to set `DOCKER_HOST` and `TESTCONTAINERS_RYUK_DISABLED`
-for either each individual test or once per test class. If you set it on the class, you cannot execute
-the individual test cases.
+If you want to set the environment variables via your IDE (e.g. IntelliJ), you can
+do that for all your JUnit test cases by going to 
+`Run > Edit configurations > select JUnit > Edit configuration template` and then set all variables there.
+Whenever you create a new JUnit configuration now, the variables are taken from the template.
 
 ## Troubleshooting
 
