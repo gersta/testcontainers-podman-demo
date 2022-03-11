@@ -1,9 +1,9 @@
-Testcontainers Podman Demo
+# Testcontainers Podman Demo
 The goal of this project is twofolded:
 - First, I want to write my first tests ever with Testcontainers and start to learn more about it
 - Second, I want to learn about Podman and other container technologies besides Docker to boost my daily coding life
 
-# Getting Testcontainers to run
+## Getting Testcontainers to run
 First, we will need a podman VM that will run our containers later
 
 `podman machine init`
@@ -58,9 +58,9 @@ As described in the [GitHub issue about connection to Ryuk](https://github.com/t
 export TESTCONTAINERS_RYUK_DISABLED=true
 ```
 
-# Troubleshooting
+## Troubleshooting
 
-## Address already in use
+### Address already in use
 When you try to setup the SSH tunnel to the VM, you get the the following error:
 
 `ssh -i ~/.ssh/podman-machine-default core@localhost -p 53136 -L'/tmp/podman.sock:/run/user/1000/podman/podman.sock'`
