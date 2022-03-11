@@ -43,11 +43,11 @@ The ssh options are as follows:
 - L: Forward connections from the local socket to the remote socket
 ```
 
-Especially `-L` is important in order to get access into the VM based on a file, which can then be referenced as follows on the host machine
+Especially `-L` is important in order to get access into the VM based on a file, which can then be referenced as follows (or whatever is your OS's approach to export environment variables) on the host machine
 where we want to run Testcontainers:
 
 ```
-DOCKER_HOST=unix:///temp/podman.sock
+export DOCKER_HOST=unix:///temp/podman.sock
 ```
 
 # Troubleshooting
