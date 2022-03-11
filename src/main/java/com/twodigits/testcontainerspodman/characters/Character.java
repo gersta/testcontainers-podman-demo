@@ -1,7 +1,6 @@
 package com.twodigits.testcontainerspodman.characters;
 
 import lombok.Data;
-import lombok.Getter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

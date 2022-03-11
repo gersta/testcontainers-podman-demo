@@ -1,6 +1,5 @@
 package com.twodigits.testcontainerspodman;
 
-import antlr.ASTNULLType;
 import com.twodigits.testcontainerspodman.characters.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
