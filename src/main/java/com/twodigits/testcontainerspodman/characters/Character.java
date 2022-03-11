@@ -1,5 +1,6 @@
 package com.twodigits.testcontainerspodman.characters;
 
+import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.Entity;
@@ -7,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Getter
+@Data
 @Entity
 @Table(name = "Character")
 public class Character {
