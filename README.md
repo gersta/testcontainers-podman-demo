@@ -88,6 +88,9 @@ As described in the [GitHub issue about connection to Ryuk](https://github.com/t
 export TESTCONTAINERS_RYUK_DISABLED=true
 ```
 
+Now, it is on you where to set these parameters: Either directly in the IDE or on the system/user level of the OS. The latter is requried
+to run `mvn` commands on the project.
+
 ## Running actual Testcontainer tests
 Setting up a postgres environment for the test cases can be made super easy by following the
 [testcontainer jdbc syntax](https://www.testcontainers.org/modules/databases/jdbc/). This allows to slightly
