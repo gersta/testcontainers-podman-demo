@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -41,6 +42,23 @@ class CharacterControllerTest {
         List<Character> characters = (List<Character>) repository.findAll();
 
         assertEquals(1, characters.size());
+    }
+
+    @Test
+    void deletes_entry_from_database() throws Exception {
+        Character character = new Character();
+
+        repository.save(character);
+
+        assertEquals(1, repository.count());
+
+        mockMvc.perform(
+                delete("/characters/1")
+        )
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Character with ID 1 deleted")));
+
+        assertEquals(0, repository.count());
     }
 
 }
